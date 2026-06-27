@@ -1,0 +1,7 @@
+torch
+numpy
+tokenizers
+nltk
+scikit-learn
+matplotlib
+jupyter
