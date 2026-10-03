@@ -1,48 +1,26 @@
-# Advanced Text Generation with RNNs: Shakespearean Style
+# Recurrent Text Generation in Shakespearean Style
 
-This project compares recurrent neural-network architectures for character or token-level text generation using Shakespeare-style text. It demonstrates sequence modeling fundamentals, training stability techniques, and controlled generation strategies.
+A PyTorch notebook for autoregressive subword text generation. A configuration selects vanilla RNN, LSTM, or GRU, BPE or WordPiece tokenization, model size, gradient clipping, and decoding settings. One execution trains the configured model; a controlled multi-model benchmark requires separate runs.
 
-## What This Shows
+## Run
 
-- Deep learning fundamentals for sequence data
-- RNN, LSTM, and GRU architecture comparison
-- Embeddings, bidirectional layers, gradient clipping, and teacher forcing
-- Temperature sampling and beam-search style generation
-- Evaluation using perplexity plus qualitative output review
-
-## Repository Contents
-
-| File | Purpose |
-|---|---|
-| `Prof_Faith_Text_Generation_with_RNNs.ipynb` | End-to-end notebook for preprocessing, model training, generation, and evaluation |
-| `README.md` | Project overview and reproducibility guide |
-
-## Methodology
-
-1. Prepare the Shakespeare text corpus for sequence modeling.
-2. Build comparable recurrent models: vanilla RNN, LSTM, and GRU.
-3. Train models with optimization safeguards such as gradient clipping.
-4. Generate text under different decoding settings to compare creativity and coherence.
-5. Evaluate model behavior with perplexity and qualitative inspection of generated samples.
-
-## Tech Stack
-
-- Python
-- Jupyter Notebook
-- TensorFlow or Keras-style recurrent models, as implemented in the notebook
-- NumPy and standard data-processing utilities
-
-## How To Run
+Use Python 3.11+, install `requirements.txt`, and place UTF-8 `shakespeare.txt` in this directory. The notebook optionally supports a Colab upload if the file is absent. Execute `Prof_Faith_Text_Generation_with_RNNs.ipynb` from the repository root.
 
 ```bash
-git clone https://github.com/Agent007repo/Advanced-Text-Generation-with-RNNs-Shakespearean-Style.git
-cd Advanced-Text-Generation-with-RNNs-Shakespearean-Style
-python -m venv .venv
-source .venv/bin/activate
 pip install -r requirements.txt
 jupyter notebook Prof_Faith_Text_Generation_with_RNNs.ipynb
 ```
 
-## Recruiter Signal
+The raw corpus is split into disjoint training and validation text before tokenizer training. Tokenizer caches are keyed by the training corpus digest. Sliding windows are constructed lazily within each partition, and each independent minibatch starts with a fresh recurrent state. Unidirectional models preserve causal next-token prediction; bidirectional configuration is rejected.
 
-This is a learning-oriented deep learning project. Its value is not production deployment; it shows comfort with sequence models, model comparison, and the tradeoff between generative diversity and coherence.
+Temperature sampling uses stable probabilities and requires a finite positive temperature. Beam search and sampling consume the prompt exactly once. Evaluation reports validation cross-entropy and perplexity, with qualitative generated samples. Optional stemming requires NLTK resources; when unavailable the notebook falls back to unstemmed text. Install the resources explicitly if stemming is needed.
+
+## Evaluation status
+
+Old notebook outputs were removed because overlapping randomly divided windows leaked corpus context across training and validation. No corrected real-corpus perplexity, architecture comparison, energy consumption, or inference-efficiency benchmark has been reproduced. These are implementation experiments, not a validated language-model benchmark.
+
+```bash
+python -m unittest discover -s tests -p test_regressions.py -v
+```
+
+Six regression tests train and evaluate all three small recurrent models, exercise a partial final batch, check lazy targets and invalid configurations, and verify stable decoding and prompt handling. They use a synthetic tokenizer and do not replace a full corpus run.
