@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="440" viewBox="0 0 1200 440" role="img" aria-labelledby="t d">
+<title id="t">Shakespearean Text RNNs</title>
+<desc id="d">Shakespearean Text RNNs: 3 architectures; 2 tokenizers; 6 regression tests; 1 notebook</desc>
+<style>
+
+.b1 { animation: drift1 22s ease-in-out infinite alternate; }
+.b2 { animation: drift2 26s ease-in-out infinite alternate; }
+.b3 { animation: drift3 18s ease-in-out infinite alternate; }
+@keyframes drift1 { to { transform: translate(-140px, 90px); } }
+@keyframes drift2 { to { transform: translate(180px, -110px); } }
+@keyframes drift3 { to { transform: translate(-90px, -60px) scale(1.25); } }
+
+.rise { animation: rise .9s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+.pop { animation: pop .6s cubic-bezier(.2,.9,.3,1.3) both; transform-box: fill-box; transform-origin: center; }
+@keyframes pop { from { opacity: 0; transform: scale(.6); } }
+.grow { animation: grow 1.4s cubic-bezier(.2,.7,.2,1) both; transform-box: fill-box; transform-origin: left center; }
+@keyframes grow { from { transform: scaleX(0); } }
+
+.eyebrow { font: 700 12.5px ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace; letter-spacing: 2px; }
+.title { font: 800 46px -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif; letter-spacing: -1px; }
+.tagline { font: 450 17px -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif; }
+.big { font: 800 34px -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif; letter-spacing: -0.5px; }
+.small { font: 500 13px -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif; }
+.mono { font: 600 13px ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace; }
+.monos { font: 500 12px ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace; }
+.head { font: 700 14px -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif; }
+
+.eyebrow { letter-spacing: 2px; }
+.draw { stroke-dasharray: 1; animation: draw 1.6s .4s cubic-bezier(.4,0,.2,1) both; }
+@keyframes draw { from { stroke-dashoffset: 1; } }
+.pulse { opacity: 0; animation: pulse 3s 2s cubic-bezier(.5,0,.5,1) infinite; }
+@keyframes pulse { 0% { transform: translateX(0); opacity: 0; } 10% { opacity: .9; } 90% { opacity: .9; } 100% { transform: translateX(568px); opacity: 0; } }
+.lit { animation: lit 3s 2s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes lit { 0%, 100% { transform: scale(1); } 8% { transform: scale(1.18); fill-opacity: .45; } 30% { transform: scale(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; }
+}
+</style>
+<defs>
+  <clipPath id="clip-rc"><rect width="1200" height="440" rx="28"/></clipPath>
+  <filter id="blur-rc" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="70"/></filter>
+  <pattern id="grid-rc" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M40 0H0V40" fill="none" stroke="#EEF1FA" stroke-width="1" opacity="0.07"/>
+  </pattern>
+  <linearGradient id="fade-rc" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0.15"/>
+  </linearGradient>
+  <mask id="gridmask-rc"><rect width="1200" height="440" fill="url(#fade-rc)"/></mask>
+</defs>
+<g clip-path="url(#clip-rc)">
+  <rect width="1200" height="440" fill="#0A0F1E"/>
+  <g filter="url(#blur-rc)" opacity="0.38">
+    <circle class="b1" cx="983" cy="66" r="230" fill="#4F46E5"/>
+    <circle class="b2" cx="216" cy="418" r="250" fill="#0EA5E9"/>
+    <circle class="b3" cx="660" cy="242" r="170" fill="#14B8A6"/>
+  </g>
+  <rect width="1200" height="440" fill="url(#grid-rc)" mask="url(#gridmask-rc)"/>
+</g>
+<rect x="0.5" y="0.5" width="1199" height="439" rx="28" fill="none" stroke="#26304F"/>
+<defs><linearGradient id="chaingrad" x1="0" x2="1"><stop offset="0" stop-color="#A78BFA"/><stop offset=".5" stop-color="#2DD4BF"/><stop offset="1" stop-color="#34D399"/></linearGradient></defs>
+<g class="rise"><text x="56" y="62" class="eyebrow" fill="#2DD4BF">NEURAL TEXT GENERATION</text></g>
+<g class="rise" style="animation-delay:.1s"><text x="54" y="114" class="title" style="font-size:32px" fill="#EEF1FA">Shakespearean Text RNNs</text></g>
+<g class="rise" style="animation-delay:.2s">
+  <text x="56" y="146" class="tagline" fill="#98A2BD">Subword RNN, LSTM and GRU text generation</text>
+  <text x="56" y="168" class="tagline" fill="#98A2BD">Leakage-aware splits and causal training</text>
+</g>
+<g class="rise" style="animation-delay:0.50s"><rect x="56" y="196" width="206" height="80" rx="16" fill="#121A36" fill-opacity="0.8" stroke="#26304F"/><rect x="56" y="214" width="3" height="44" rx="1.5" fill="#60A5FA"/><text x="74" y="234" class="big" fill="#60A5FA">3</text><text x="74" y="252" class="small" fill="#EEF1FA">architectures</text><text x="74" y="267" class="small" fill="#98A2BD">RNN, LSTM, GRU</text></g><g class="rise" style="animation-delay:0.62s"><rect x="278" y="196" width="206" height="80" rx="16" fill="#121A36" fill-opacity="0.8" stroke="#26304F"/><rect x="278" y="214" width="3" height="44" rx="1.5" fill="#2DD4BF"/><text x="296" y="234" class="big" fill="#2DD4BF">2</text><text x="296" y="252" class="small" fill="#EEF1FA">tokenizers</text><text x="296" y="267" class="small" fill="#98A2BD">BPE and WordPiece</text></g><g class="rise" style="animation-delay:0.74s"><rect x="56" y="288" width="206" height="80" rx="16" fill="#121A36" fill-opacity="0.8" stroke="#26304F"/><rect x="56" y="306" width="3" height="44" rx="1.5" fill="#A78BFA"/><text x="74" y="326" class="big" fill="#A78BFA">6</text><text x="74" y="344" class="small" fill="#EEF1FA">regression tests</text><text x="74" y="359" class="small" fill="#98A2BD">synthetic tokenizer</text></g><g class="rise" style="animation-delay:0.86s"><rect x="278" y="288" width="206" height="80" rx="16" fill="#121A36" fill-opacity="0.8" stroke="#26304F"/><rect x="278" y="306" width="3" height="44" rx="1.5" fill="#FBBF24"/><text x="296" y="326" class="big" fill="#FBBF24">1</text><text x="296" y="344" class="small" fill="#EEF1FA">notebook</text><text x="296" y="359" class="small" fill="#98A2BD">PyTorch, 2 code cells</text></g>
+<g class="rise" style="animation-delay:1.1s"><text x="56" y="404" class="monos" fill="#5B6683">PyTorch · tokenizers · NLTK · NumPy · matplotlib</text></g>
+<line x1="560" y1="112" x2="1128" y2="112" stroke="#26304F" stroke-width="2"/><line class="draw" x1="560" y1="112" x2="1128" y2="112" stroke="url(#chaingrad)" stroke-width="3" stroke-linecap="round" pathLength="1"/><circle class="pulse" cx="560" cy="112" r="7" fill="#EEF1FA"/><g class="rise" style="animation-delay:.3s"><text x="530" y="62" class="head" fill="#EEF1FA">Pipeline</text><text x="1158" y="62" text-anchor="end" class="monos" fill="#98A2BD">Disjoint splits before tokenizer training</text></g><g class="pop" style="animation-delay:0.40s"><circle class="lit" style="animation-delay:0.0s" cx="560.0" cy="112" r="31" fill="#A78BFA" fill-opacity="0.16" stroke="#A78BFA" stroke-width="2"/><circle cx="560.0" cy="112" r="25" fill="#121A36"/><text x="560.0" y="118" text-anchor="middle" class="mono" style="font-size:16px;font-weight:800" fill="#A78BFA">1</text><text x="560.0" y="168" text-anchor="middle" class="small" fill="#EEF1FA">Split</text><text x="560.0" y="184" text-anchor="middle" class="small" fill="#98A2BD">disjoint</text></g><g class="pop" style="animation-delay:0.58s"><circle class="lit" style="animation-delay:0.6s" cx="702.0" cy="112" r="31" fill="#60A5FA" fill-opacity="0.16" stroke="#60A5FA" stroke-width="2"/><circle cx="702.0" cy="112" r="25" fill="#121A36"/><text x="702.0" y="118" text-anchor="middle" class="mono" style="font-size:16px;font-weight:800" fill="#60A5FA">2</text><text x="702.0" y="168" text-anchor="middle" class="small" fill="#EEF1FA">Tokenize</text><text x="702.0" y="184" text-anchor="middle" class="small" fill="#98A2BD">subword</text></g><g class="pop" style="animation-delay:0.76s"><circle class="lit" style="animation-delay:1.2s" cx="844.0" cy="112" r="31" fill="#2DD4BF" fill-opacity="0.16" stroke="#2DD4BF" stroke-width="2"/><circle cx="844.0" cy="112" r="25" fill="#121A36"/><text x="844.0" y="118" text-anchor="middle" class="mono" style="font-size:16px;font-weight:800" fill="#2DD4BF">3</text><text x="844.0" y="168" text-anchor="middle" class="small" fill="#EEF1FA">Window</text><text x="844.0" y="184" text-anchor="middle" class="small" fill="#98A2BD">lazy</text></g><g class="pop" style="animation-delay:0.94s"><circle class="lit" style="animation-delay:1.8s" cx="986.0" cy="112" r="31" fill="#FBBF24" fill-opacity="0.16" stroke="#FBBF24" stroke-width="2"/><circle cx="986.0" cy="112" r="25" fill="#121A36"/><text x="986.0" y="118" text-anchor="middle" class="mono" style="font-size:16px;font-weight:800" fill="#FBBF24">4</text><text x="986.0" y="168" text-anchor="middle" class="small" fill="#EEF1FA">Train</text><text x="986.0" y="184" text-anchor="middle" class="small" fill="#98A2BD">RNN/LSTM/GRU</text></g><g class="pop" style="animation-delay:1.12s"><circle class="lit" style="animation-delay:2.4s" cx="1128.0" cy="112" r="31" fill="#34D399" fill-opacity="0.16" stroke="#34D399" stroke-width="2"/><circle cx="1128.0" cy="112" r="25" fill="#121A36"/><text x="1128.0" y="118" text-anchor="middle" class="mono" style="font-size:16px;font-weight:800" fill="#34D399">5</text><text x="1128.0" y="168" text-anchor="middle" class="small" fill="#EEF1FA">Decode</text><text x="1128.0" y="184" text-anchor="middle" class="small" fill="#98A2BD">temperature</text></g><g class="rise" style="animation-delay:.6s"><rect x="530" y="222" width="640" height="186" rx="18" fill="#121A36" fill-opacity="0.85" stroke="#26304F"/><text x="552" y="254" class="head" fill="#EEF1FA">Honest scope</text><g class="rise" style="animation-delay:0.90s"><circle cx="560" cy="283" r="4" fill="#2DD4BF"/><text x="574" y="288" class="small" style="font-size:14.5px" fill="#EEF1FA">Old outputs were removed: random windows leaked across splits.</text></g><g class="rise" style="animation-delay:1.05s"><circle cx="560" cy="311" r="4" fill="#A78BFA"/><text x="574" y="316" class="small" style="font-size:14.5px" fill="#EEF1FA">No corrected real-corpus perplexity or benchmark yet.</text></g><g class="rise" style="animation-delay:1.20s"><circle cx="560" cy="339" r="4" fill="#FBBF24"/><text x="574" y="344" class="small" style="font-size:14.5px" fill="#EEF1FA">Tests use a synthetic tokenizer, not a full corpus run.</text></g></g></svg>
